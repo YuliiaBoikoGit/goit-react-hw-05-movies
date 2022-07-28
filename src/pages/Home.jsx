@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchTrendingsMovies } from "api/moviesApi";
 import { MovieGallery } from "components/MovieGallery/MovieGallery";
+import { GalleryTitle } from "components/GalleryTitle/GalleryTitle";
 import { LoadButton } from "components/LoadBtn/LoadBtn";
 
 export const Home = () => {
@@ -21,6 +22,8 @@ export const Home = () => {
     
     return (
         <>
+            <GalleryTitle />
+            
             <MovieGallery movies={movies} />
         
             {movies.length >= itemsPerPage && <LoadButton onClick={loadMore} />}

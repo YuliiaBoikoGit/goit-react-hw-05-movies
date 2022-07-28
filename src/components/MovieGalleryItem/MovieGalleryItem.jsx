@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { MovieGalleryItem, MovieGalleryItemImage, MovieGalleryItemTitle } from "./MovieGalleryItem.styled";
 
 export const GalleryItem = ({ movie }) => {
+    
     let poster;
 
     if (movie.poster_path) { 
@@ -9,6 +10,7 @@ export const GalleryItem = ({ movie }) => {
     } else {
         poster = 'https://bflix.biz/no-poster.png';
     };
+    
     return (
         <MovieGalleryItem>
             <MovieGalleryItemTitle>{movie.title}</MovieGalleryItemTitle>
@@ -20,5 +22,6 @@ export const GalleryItem = ({ movie }) => {
 GalleryItem.propTypes = {
     movie: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        poster_path: PropTypes.string,
     }),
 };

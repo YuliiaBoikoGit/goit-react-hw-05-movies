@@ -14,8 +14,8 @@ export const MovieGalleryItem = styled.li`
 
 export const MovieGalleryItemImage = styled.img`
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  height: 440px;
+  object-fit: contain;
 `;
 
 export const MovieGalleryItemTitle = styled.p`
