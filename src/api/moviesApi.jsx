@@ -18,6 +18,8 @@ export const fetchMoviesByName = async (query, page) => {
     });
     const res = await axios.get(`/search/movie?api_key=${API_KEY}&query=${query}&${searchParams}`);
 
+    console.log(res.data)
+
     return res.data;
 };
 
