@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from "react-router-dom";
 
 export const MovieGalleryItem = styled.li`
   border-radius: 2px;
@@ -25,4 +26,9 @@ export const MovieGalleryItemTitle = styled.p`
   font-size: 20px;
   font-weight: 600;
   height: 24px;
+`;
+
+export const MovieLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
 `;

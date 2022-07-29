@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { MovieGalleryItem, MovieGalleryItemImage, MovieGalleryItemTitle } from "./MovieGalleryItem.styled";
+import { MovieGalleryItem, MovieGalleryItemImage, MovieGalleryItemTitle, MovieLink } from "./MovieGalleryItem.styled";
 
 export const GalleryItem = ({ movie }) => {
     
@@ -13,8 +13,10 @@ export const GalleryItem = ({ movie }) => {
     
     return (
         <MovieGalleryItem>
-            <MovieGalleryItemTitle>{movie.title}</MovieGalleryItemTitle>
-            <MovieGalleryItemImage src={poster} alt={movie.title} />
+            <MovieLink to={`${movie.id}`}>
+                <MovieGalleryItemTitle>{movie.title}</MovieGalleryItemTitle>
+                <MovieGalleryItemImage src={poster} alt={movie.title} />
+            </MovieLink>    
         </MovieGalleryItem>
     );
 };

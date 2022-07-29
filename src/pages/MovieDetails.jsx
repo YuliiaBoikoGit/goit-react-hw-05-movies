@@ -1,7 +1,23 @@
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchMovieByID } from "api/moviesApi";
+import { MovieInfo } from "components/MovieInfo/MovieInfo";
+
 export const MovieDetails = () => {
+  const { movieId } = useParams();
+  const [movie, setMovie] = useState('');
+
+  useEffect(() => { 
+      async function fetchData() {
+        const movie = await fetchMovieByID(movieId);
+        setMovie(movie);
+    };
+    fetchData();
+  }, [movieId]);
+
   return (
     <main>
-      <h1>MovieDetails page</h1>
+      <MovieInfo movie={movie} />
     </main>
   );
 };

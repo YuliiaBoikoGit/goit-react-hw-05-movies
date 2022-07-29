@@ -4,9 +4,13 @@ import { GalleryItem } from "components/MovieGalleryItem/MovieGalleryItem";
 
 export const MovieGallery = ({ movies }) => {
     return (
-        <Gallery>
-            {movies.map(movie => <GalleryItem key={movie.id} movie={movie} />)}
-        </Gallery>  
+        <>
+            <Gallery>
+                {movies.map(movie =>
+                 <GalleryItem key={movie.id} movie={movie} />
+             )}
+            </Gallery>
+        </>    
     );
 };
 
