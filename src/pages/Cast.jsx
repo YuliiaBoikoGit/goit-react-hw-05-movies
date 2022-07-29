@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchMovieCast } from "api/moviesApi";
 import { CastInfo } from "components/CastInfo/CastInfo";
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [movieCast, setMovieCast] = useState([]);
 
@@ -21,3 +21,5 @@ export const Cast = () => {
     </ul>
   );
 };
+
+export default Cast;

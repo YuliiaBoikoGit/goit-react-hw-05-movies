@@ -4,7 +4,7 @@ import { MovieGallery } from "components/MovieGallery/MovieGallery";
 import { GalleryTitle } from "components/GalleryTitle/GalleryTitle";
 import { LoadButton } from "components/LoadBtn/LoadBtn";
 
-export const Home = () => {
+const Home = () => {
     const [page, setPage] = useState(1);
     const [movies, setMovies] = useState([]);
 
@@ -30,3 +30,5 @@ export const Home = () => {
         </>    
     );
 };
+
+export default Home;

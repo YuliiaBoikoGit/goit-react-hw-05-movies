@@ -1,4 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
+import { Suspense } from "react";
+import { PageLoader } from "components/Loader/Loader";
 
 export const MovieInfo = ({ movie }) => {
     let poster;
@@ -39,7 +41,9 @@ export const MovieInfo = ({ movie }) => {
                 <li><Link to="cast">Cast</Link></li>
                 <li><Link to="reviews">Reviews</Link></li>
             </ul>
-            <Outlet />
+            <Suspense fallback={<PageLoader />}>
+                <Outlet />
+            </Suspense>
         </main>
     );
 };

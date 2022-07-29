@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchMovieByID } from "api/moviesApi";
 import { MovieInfo } from "components/MovieInfo/MovieInfo";
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState('');
 
@@ -21,3 +21,5 @@ export const MovieDetails = () => {
     </main>
   );
 };
+
+export default MovieDetails;

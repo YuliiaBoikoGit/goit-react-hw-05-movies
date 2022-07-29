@@ -4,7 +4,7 @@ import { fetchMovieReviews } from "api/moviesApi";
 import { MovieReviews } from "components/MovieReviews/MovieReviews";
 
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState([]);
 
@@ -22,3 +22,5 @@ export const Reviews = () => {
     </ul>
   );
 };
+
+export default Reviews;

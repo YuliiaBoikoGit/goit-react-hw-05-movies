@@ -8,7 +8,7 @@ import { Info } from 'components/SearchBar/SearchBar.styled';
 import { MovieGallery } from 'components/MovieGallery/MovieGallery';
 import { LoadButton } from 'components/LoadBtn/LoadBtn';
 
-export const Movies = () => {
+const Movies = () => {
     const [page, setPage] = useState(1);
     const [movies, setMovies] = useState([]);
     const [movieName, setMovieName] = useState('');
@@ -60,3 +60,5 @@ export const Movies = () => {
         </>
     );
 };
+
+export default Movies;
