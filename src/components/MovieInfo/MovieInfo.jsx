@@ -1,6 +1,20 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Suspense } from "react";
 import { PageLoader } from "components/Loader/Loader";
+import {
+    Container,
+    Link,
+    LinkList,
+    LinkListItem,
+    Image,
+    Button,
+    MovieInfoContainer,
+    MovieDetailsContainer,
+    MovieTitle,
+    Info,
+    Title,
+    Genres
+} from "./MovieInfo.styled";
 
 export const MovieInfo = ({ movie }) => {
     let poster;
@@ -27,23 +41,28 @@ export const MovieInfo = ({ movie }) => {
     };
 
     return (
-        <main>
-            <button type="button">Go back</button>
-            <img src={poster} alt={movie.title} />
-            <h2>{movie.title} ({releaseDate})</h2>
-            <p>User score: {voteAverage}</p>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
-            <p>{movieGenres.map(genre => genre.name).join(', ')}</p>
-            <hr />
-            <ul>
-                <li><Link to="cast">Cast</Link></li>
-                <li><Link to="reviews">Reviews</Link></li>
-            </ul>
+        <Container>
+            <Button type="button">Go back</Button>
+            <MovieDetailsContainer> 
+                <Image src={poster} alt={movie.title} />
+                <MovieInfoContainer>
+                    <MovieTitle>{movie.title} ({releaseDate})</MovieTitle>
+                    <Info>User score: {voteAverage}</Info>
+                    <Title>Overview</Title>
+                    <Info>{movie.overview}</Info>
+                    <Title>Genres</Title>
+                    <Genres>{movieGenres.map(genre => genre.name).join(', ')}</Genres> 
+                    <Title>Additional information</Title>
+                    <LinkList>
+                        <LinkListItem><Link to="cast">Cast</Link></LinkListItem>
+                        <LinkListItem><Link to="reviews">Reviews</Link></LinkListItem>
+                    </LinkList>
+            </MovieInfoContainer>    
+             </MovieDetailsContainer>          
             <Suspense fallback={<PageLoader />}>
+                <hr />
                 <Outlet />
             </Suspense>
-        </main>
+        </Container>
     );
 };
