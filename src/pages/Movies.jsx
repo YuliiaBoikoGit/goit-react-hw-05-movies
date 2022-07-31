@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,9 +10,10 @@ import { MovieGallery } from 'components/MovieGallery/MovieGallery';
 import { LoadButton } from 'components/LoadBtn/LoadBtn';
 
 const Movies = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [page, setPage] = useState(1);
     const [movies, setMovies] = useState([]);
-    const [movieName, setMovieName] = useState('');
+    const [movieName, setMovieName] = useState(searchParams.get('query') ||'');
     const [error, setError] = useState('');
 
     useEffect(() => { 
@@ -28,10 +30,12 @@ const Movies = () => {
                 return toast.error("We're sorry, but you've reached the end of search results.");
             };
 
+            setSearchParams({ query: movieName });
+
             setMovies(prevState => [...prevState, ...data.results]);
         })
         .catch(error => setError(error));
-    }, [movieName, page]);
+    }, [movieName, page, setSearchParams]);
 
     const handleFormSubmit = movieName => {
         setMovieName(movieName);

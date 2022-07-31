@@ -17,7 +17,7 @@ const Cast = () => {
 
   return (
     <ul>
-      {movieCast.map(actor => <CastInfo key={actor.id} actor={actor} />)}
+      {movieCast.map(actor => <CastInfo key={actor.credit_id} actor={actor} />)}
     </ul>
   );
 };

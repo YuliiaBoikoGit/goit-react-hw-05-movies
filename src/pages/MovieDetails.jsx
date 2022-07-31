@@ -8,12 +8,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-
-  const handleGoBack = () => {
-    navigate(location?.state?.from ?? "/");
-  };
   
-
   useEffect(() => { 
       async function fetchData() {
         const movie = await fetchMovieByID(movieId);
@@ -21,6 +16,10 @@ const MovieDetails = () => {
     };
     fetchData();
   }, [movieId]);
+
+  const handleGoBack = () => {
+    navigate(location?.state?.from ?? "/");
+  };
 
   return (
     <main>

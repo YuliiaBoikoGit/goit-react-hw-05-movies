@@ -55,8 +55,8 @@ export const MovieInfo = ({ movie, onClick }) => {
                     <Genres>{movieGenres.map(genre => genre.name).join(', ')}</Genres> 
                     <Title>Additional information</Title>
                     <LinkList>
-                        <LinkListItem><Link to={`/movies/${movie.id}/cast`} state={location.state}>Cast</Link></LinkListItem>
-                        <LinkListItem><Link to={`/movies/${movie.id}/reviews`} state={location.state}>Reviews</Link></LinkListItem>
+                        <LinkListItem><Link to="cast" state={location.state}>Cast</Link></LinkListItem>
+                        <LinkListItem><Link to="reviews" state={location.state}>Reviews</Link></LinkListItem>
                     </LinkList>
             </MovieInfoContainer>    
              </MovieDetailsContainer>          
