@@ -27,5 +27,6 @@ GalleryItem.propTypes = {
     movie: PropTypes.shape({
         title: PropTypes.string.isRequired,
         poster_path: PropTypes.string,
+        id: PropTypes.number,
     }),
 };

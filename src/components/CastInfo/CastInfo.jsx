@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { ActorPhoto, CastListItem, ActorName, ActorCharacter } from "./CastInfo.styled";
 
 export const CastInfo = ({ actor }) => {
@@ -16,4 +17,12 @@ export const CastInfo = ({ actor }) => {
             <ActorCharacter>Character: {actor.character}</ActorCharacter>
         </CastListItem>
     );
+};
+
+CastInfo.propTypes = {
+    actor: PropTypes.shape({
+        profile_path: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        character: PropTypes.string.isRequired,
+    }),
 };

@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Suspense } from "react";
+import PropTypes from 'prop-types';
 import { PageLoader } from "components/Loader/Loader";
 import {
     Container,
@@ -66,4 +67,15 @@ export const MovieInfo = ({ movie, onClick }) => {
             </Suspense>
         </Container>
     );
+};
+
+MovieInfo.propTypes = {
+    movie: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        overview: PropTypes.string,
+        release_date: PropTypes.string,
+        genres: PropTypes.array,
+        vote_average: PropTypes.number,
+    }),
+    onClick: PropTypes.func.isRequired,
 };
