@@ -15,7 +15,7 @@ export const GalleryItem = ({ movie }) => {
     
     return (
         <MovieGalleryItem>
-            <MovieLink to={`${movie.id}`} state={{ from: location }}>
+            <MovieLink to={`/movies/${movie.id}`} state={{ from: location }}>
                 <MovieGalleryItemTitle>{movie.title}</MovieGalleryItemTitle>
                 <MovieGalleryItemImage src={poster} alt={movie.title} />
             </MovieLink>    

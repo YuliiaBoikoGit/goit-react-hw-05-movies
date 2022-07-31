@@ -30,18 +30,18 @@ export const App = () => {
           <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
         </Nav>
-      </Header>
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="movies" element={<Movies />} />
-          <Route path="movies/:movieId" element={<MovieDetails />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>  
+      </Header>  
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="movies" element={<Movies />} />
+            <Route path="/movies/:movieId" element={<MovieDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
     </Container>
   );
 };
