@@ -12,18 +12,15 @@ const MovieDetails = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  
-  useEffect(() => { 
-      async function fetchData() {
-       try {
-          const movie = await fetchMovieByID(movieId);
-          setMovie(movie);
-        } catch (error) {
-          setError(error);
-        };
-    };
-    fetchData();
-  }, [movieId]);
+
+  useEffect(() => {
+    fetchMovieByID(movieId)
+      .then(data => setMovie(data))
+      .catch(error => {
+        setError(error);
+        navigate("/");
+      });
+  }, [movieId, navigate]);
 
   const handleGoBack = () => {
     navigate(location?.state?.from ?? "/");

@@ -23,6 +23,10 @@ export const fetchMoviesByName = async (query, page) => {
 
 export const fetchMovieByID = async (movieID) => {
     const res = await axios.get(`/movie/${movieID}?api_key=${API_KEY}`);
+
+    if (res.status === 404) {
+        throw new Error(res.status);
+    };
     
     return res.data;
 };
