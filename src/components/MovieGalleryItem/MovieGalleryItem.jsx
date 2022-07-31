@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
 import { MovieGalleryItem, MovieGalleryItemImage, MovieGalleryItemTitle, MovieLink } from "./MovieGalleryItem.styled";
 
 export const GalleryItem = ({ movie }) => {
+    const location = useLocation();
     
     let poster;
 
@@ -13,7 +15,7 @@ export const GalleryItem = ({ movie }) => {
     
     return (
         <MovieGalleryItem>
-            <MovieLink to={`${movie.id}`}>
+            <MovieLink to={`${movie.id}`} state={{ from: location }}>
                 <MovieGalleryItemTitle>{movie.title}</MovieGalleryItemTitle>
                 <MovieGalleryItemImage src={poster} alt={movie.title} />
             </MovieLink>    

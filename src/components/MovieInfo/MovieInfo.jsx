@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Suspense } from "react";
 import { PageLoader } from "components/Loader/Loader";
 import {
@@ -16,7 +16,8 @@ import {
     Genres
 } from "./MovieInfo.styled";
 
-export const MovieInfo = ({ movie }) => {
+export const MovieInfo = ({ movie, onClick }) => {
+    const location = useLocation();
     let poster;
     let releaseDate = 'No date';
     let voteAverage = 0;
@@ -42,7 +43,7 @@ export const MovieInfo = ({ movie }) => {
 
     return (
         <Container>
-            <Button type="button">Go back</Button>
+            <Button type="button" onClick={onClick}>Go back</Button>
             <MovieDetailsContainer> 
                 <Image src={poster} alt={movie.title} />
                 <MovieInfoContainer>
@@ -54,8 +55,8 @@ export const MovieInfo = ({ movie }) => {
                     <Genres>{movieGenres.map(genre => genre.name).join(', ')}</Genres> 
                     <Title>Additional information</Title>
                     <LinkList>
-                        <LinkListItem><Link to="cast">Cast</Link></LinkListItem>
-                        <LinkListItem><Link to="reviews">Reviews</Link></LinkListItem>
+                        <LinkListItem><Link to={`/movies/${movie.id}/cast`} state={location.state}>Cast</Link></LinkListItem>
+                        <LinkListItem><Link to={`/movies/${movie.id}/reviews`} state={location.state}>Reviews</Link></LinkListItem>
                     </LinkList>
             </MovieInfoContainer>    
              </MovieDetailsContainer>          

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchMovieByID } from "api/moviesApi";
 import { MovieInfo } from "components/MovieInfo/MovieInfo";
@@ -6,6 +6,13 @@ import { MovieInfo } from "components/MovieInfo/MovieInfo";
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleGoBack = () => {
+    navigate(location?.state?.from ?? "/");
+  };
+  
 
   useEffect(() => { 
       async function fetchData() {
@@ -17,7 +24,7 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <MovieInfo movie={movie} />
+      <MovieInfo movie={movie} onClick={handleGoBack} />
     </main>
   );
 };
