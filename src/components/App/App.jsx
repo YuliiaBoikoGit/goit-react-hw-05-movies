@@ -27,22 +27,18 @@ export const App = () => {
     <Container>
       <Header>
         <Nav>
-          <Link to="/goit-react-hw-05-movies/">Home</Link>
-          <Link to="/goit-react-hw-05-movies/movies">Movies</Link>
+          <Link to="/">Home</Link>
+          <Link to="/movies">Movies</Link>
         </Nav>
       </Header>
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path="/goit-react-hw-05-movies/" element={<Home />} />
-          <Route path="/goit-react-hw-05-movies/movies" element={<Movies />} />
-         <Route path="/goit-react-hw-05-movies/:movieId" element={<MovieDetails />}>
+          <Route path="/" element={<Home />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="/goit-react-hw-05-movies/movies/:movieId" element={<MovieDetails />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>  
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>  

@@ -23,7 +23,7 @@ export const fetchMoviesByName = async (query, page) => {
 
 export const fetchMovieByID = async (movieID) => {
     const res = await axios.get(`/movie/${movieID}?api_key=${API_KEY}`);
-
+    
     return res.data;
 };
 

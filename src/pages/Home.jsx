@@ -7,11 +7,12 @@ import { LoadButton } from "components/LoadBtn/LoadBtn";
 const Home = () => {
     const [page, setPage] = useState(1);
     const [movies, setMovies] = useState([]);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         fetchTrendingsMovies(page).then(data => {
             setMovies(prevState => [...prevState, ...data.results]);
-        });
+        }).catch(error => setError(error));
     }, [page]);
 
     const loadMore = () => {
@@ -23,6 +24,8 @@ const Home = () => {
     return (
         <>
             <GalleryTitle />
+
+            {error && <p>{error.message}</p>}
             
             <MovieGallery movies={movies} />
         
