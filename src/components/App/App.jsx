@@ -1,7 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Container, Header, Link, Nav } from "./App.styled";
-import { PageLoader } from "components/Loader/Loader";
+import { Layout } from "components/Layout/Layout";
 
 const Home = lazy(() =>
   import('pages/Home' /* webpackChunkName: "home" */)
@@ -23,25 +22,17 @@ const NotFound = lazy(() =>
 );
 
 export const App = () => {
-  return (
-    <Container>
-      <Header>
-        <Nav>
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
-        </Nav>
-      </Header>  
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="movies" element={<Movies />} />
-            <Route path="/movies/:movieId" element={<MovieDetails />}>
-              <Route path="cast" element={<Cast />} />
-              <Route path="reviews" element={<Reviews />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-    </Container>
+  return ( 
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 };
